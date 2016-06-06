@@ -1,13 +1,21 @@
-let sequence = [];
+function* numbers(start) {
+    while (true) {
+        yield start++;
+    }
+}
 
-for(i = 1; i < 1000; i++) {
-  sequence.push(i);
+function* take(count, seq) {
+  for(let i = 0; i < count; i++) {
+    yield seq.next().value;
+  }
 }
 
 function multiple(num) {
   return num % 3 === 0 || num % 5 === 0;
 }
 
-let sum = sequence.filter((elem, i, array) => multiple(elem)).reduce((sum, elem, i, array) => sum += elem);
+let [...sequence] = take(1000, numbers(0));
+
+let sum = sequence.filter((elem) => multiple(elem)).reduce((sum, elem) => sum += elem);
 
 console.log(sum);
