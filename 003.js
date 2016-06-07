@@ -35,7 +35,7 @@ function* primes() {
     }
 }
 
-function* numbers(start) {
+function* numbers(start = 0) {
     while (true) {
         yield start++;
     }
