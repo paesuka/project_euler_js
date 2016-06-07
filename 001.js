@@ -2,7 +2,7 @@
 // The sum of these multiples is 23.
 // Find the sum of all the multiples of 3 or 5 below 1000.
 
-function* numbers(start) {
+function* numbers(start = 0) {
     while (true) {
         yield start++;
     }
@@ -18,7 +18,7 @@ function multiple(num) {
   return num % 3 === 0 || num % 5 === 0;
 }
 
-let [...sequence] = take(1000, numbers(0));
+let [...sequence] = take(1000, numbers());
 
 let sum = sequence.filter((elem) => multiple(elem)).reduce((sum, elem) => sum += elem);
 
